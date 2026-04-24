@@ -24,10 +24,8 @@ services:
       - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/my-ping-dashboard.json
       - GF_INSTALL_PLUGINS=victoriametrics-metrics-datasource
   reachistorian-collector:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: reachistorian-collector:v1.0.0
+    image: ${REACHISTORIAN_IMAGE:-kodai2199/reachistorian:latest}
+    pull_policy: always
     container_name: reachistorian-collector
     volumes:
       - ./config.yaml:/app/config.yaml:ro

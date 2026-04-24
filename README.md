@@ -132,16 +132,3 @@ You do not need to restart the collector after editing `config.yaml`.
 - `host_rtt{host="...",name="..."}`
 
 Timestamps are written in Unix milliseconds and pushed in Prometheus text format to VictoriaMetrics.
-
-## Repository Layout
-
-```text
-.
-├── main.go
-├── config.yaml
-├── compose.yaml
-├── Dockerfile
-└── grafana/
-    ├── dashboards/
-    └── provisioning/
-```
