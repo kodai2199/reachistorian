@@ -8,7 +8,7 @@ RUN go mod download
 COPY . .
 RUN go build -o reachistorian ./main.go
 
-FROM alpine:3.22
+FROM alpine:3.23
 
 WORKDIR /app
 
