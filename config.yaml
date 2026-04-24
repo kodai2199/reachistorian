@@ -1,0 +1,15 @@
+push_url: http://reachistorian-db:8428/api/v1/import/prometheus
+interval: 1s
+timeout: 1s
+bind_addr4: "0.0.0.0"
+bind_addr6: "::"
+payload_size: 32
+devices: 
+  - host: 192.168.1.1
+    name: "Router"    
+  - host: www.google.it
+    name: "Google"
+  - host: www.facebook.com
+    name: "Facebook"
+  - host: 1.1.1.1
+    name: "Cloudflare DNS"

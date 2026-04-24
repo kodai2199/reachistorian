@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+  - name: VictoriaMetrics
+    # This must match the plugin ID exactly
+    type: victoriametrics-metrics-datasource
+    access: proxy
+    url: http://reachistorian-db:8428
+    isDefault: true
+    editable: true
+    jsonData:
+      # Optional: set the default query type to MetricsQL
+      queryEditorMode: 'MetricsQL'

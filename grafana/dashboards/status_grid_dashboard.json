@@ -1,0 +1,206 @@
+{
+    "apiVersion": "dashboard.grafana.app/v2",
+    "kind": "Dashboard",
+    "metadata": {
+        "name": "adjg4s9",
+        "namespace": "default",
+        "uid": "c71728f3-ad0a-4558-abef-a2771edda65d",
+        "resourceVersion": "1776890390651017",
+        "generation": 6,
+        "creationTimestamp": "2026-04-22T20:29:48Z",
+        "labels": {
+            "grafana.app/deprecatedInternalID": "2416028420263936"
+        },
+        "annotations": {
+            "grafana.app/createdBy": "user:afjsjyin55p8ga",
+            "grafana.app/folder": "",
+            "grafana.app/saved-from-ui": "Grafana v13.0.1 (a100054f)",
+            "grafana.app/updatedBy": "user:afjsjyin55p8ga",
+            "grafana.app/updatedTimestamp": "2026-04-22T20:39:50Z"
+        }
+    },
+    "spec": {
+        "annotations": [
+            {
+                "kind": "AnnotationQuery",
+                "spec": {
+                    "query": {
+                        "kind": "DataQuery",
+                        "group": "grafana",
+                        "version": "v0",
+                        "datasource": {
+                            "name": "-- Grafana --"
+                        },
+                        "spec": {}
+                    },
+                    "enable": true,
+                    "hide": true,
+                    "iconColor": "rgba(0, 211, 255, 1)",
+                    "name": "Annotations & Alerts",
+                    "builtIn": true
+                }
+            }
+        ],
+        "cursorSync": "Off",
+        "editable": true,
+        "elements": {
+            "panel-1": {
+                "kind": "Panel",
+                "spec": {
+                    "id": 1,
+                    "title": "Status Grid",
+                    "description": "",
+                    "links": [],
+                    "data": {
+                        "kind": "QueryGroup",
+                        "spec": {
+                            "queries": [
+                                {
+                                    "kind": "PanelQuery",
+                                    "spec": {
+                                        "query": {
+                                            "kind": "DataQuery",
+                                            "group": "victoriametrics-metrics-datasource",
+                                            "version": "v0",
+                                            "datasource": {
+                                                "name": "VictoriaMetrics"
+                                            },
+                                            "spec": {
+                                                "editorMode": "builder",
+                                                "expr": "host_up",
+                                                "format": "time_series",
+                                                "interval": "1m",
+                                                "legendFormat": "{{host}}({{name}})",
+                                                "range": true
+                                            }
+                                        },
+                                        "refId": "A",
+                                        "hidden": false
+                                    }
+                                }
+                            ],
+                            "queryOptions": {
+                                "maxDataPoints": 500
+                            },
+                            "transformations": []
+                        }
+                    },
+                    "vizConfig": {
+                        "kind": "VizConfig",
+                        "group": "status-history",
+                        "version": "13.0.1",
+                        "spec": {
+                            "options": {
+                                "annotations": {
+                                    "clustering": -1,
+                                    "multiLane": false
+                                },
+                                "colWidth": 0.9,
+                                "legend": {
+                                    "displayMode": "list",
+                                    "placement": "bottom",
+                                    "showLegend": false
+                                },
+                                "rowHeight": 0.9,
+                                "showValue": "auto",
+                                "tooltip": {
+                                    "hideZeros": false,
+                                    "mode": "single",
+                                    "sort": "none"
+                                }
+                            },
+                            "fieldConfig": {
+                                "defaults": {
+                                    "thresholds": {
+                                        "mode": "absolute",
+                                        "steps": [
+                                            {
+                                                "value": 0,
+                                                "color": "red"
+                                            },
+                                            {
+                                                "value": 1,
+                                                "color": "green"
+                                            }
+                                        ]
+                                    },
+                                    "color": {
+                                        "mode": "thresholds"
+                                    },
+                                    "custom": {
+                                        "axisPlacement": "auto",
+                                        "fillOpacity": 70,
+                                        "hideFrom": {
+                                            "legend": false,
+                                            "tooltip": false,
+                                            "viz": false
+                                        },
+                                        "lineWidth": 1
+                                    }
+                                },
+                                "overrides": []
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "layout": {
+            "kind": "AutoGridLayout",
+            "spec": {
+                "maxColumnCount": 1,
+                "columnWidthMode": "standard",
+                "rowHeightMode": "tall",
+                "fillScreen": true,
+                "items": [
+                    {
+                        "kind": "AutoGridLayoutItem",
+                        "spec": {
+                            "element": {
+                                "kind": "ElementReference",
+                                "name": "panel-1"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "links": [],
+        "liveNow": false,
+        "preload": false,
+        "tags": [],
+        "timeSettings": {
+            "timezone": "browser",
+            "from": "now-3h",
+            "to": "now",
+            "autoRefresh": "1m",
+            "autoRefreshIntervals": [
+                "5s",
+                "10s",
+                "30s",
+                "1m",
+                "5m",
+                "15m",
+                "30m",
+                "1h",
+                "2h",
+                "1d"
+            ],
+            "hideTimepicker": false,
+            "fiscalYearStartMonth": 0
+        },
+        "title": "Status Grid",
+        "variables": [],
+        "preferences": {
+            "layout": {
+                "kind": "AutoGridLayout",
+                "spec": {
+                    "maxColumnCount": 3,
+                    "columnWidthMode": "standard",
+                    "rowHeightMode": "standard",
+                    "items": []
+                }
+            }
+        }
+    }
+}

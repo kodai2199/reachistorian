@@ -1,0 +1,10 @@
+apiVersion: 1
+
+providers:
+  - name: 'ReachHistorian Dashboards' # A name for the UI
+    type: file
+    disableDeletion: false
+    editable: true             # Allows you to edit in UI (but changes won't save to JSON)
+    updateIntervalSeconds: 30  # Scans for file changes every 30s
+    options:
+      path: /var/lib/grafana/dashboards

@@ -1,0 +1,37 @@
+services:
+  reachistorian-db:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: reachistorian-db
+    command:
+      - '-search.latencyOffset=1s'
+    ports:
+      - "8428:8428"
+  reachistorian-dashboard:
+    image: grafana/grafana:latest
+    container_name: reachistorian-dashboard
+    ports:
+      - "3000:3000"
+    depends_on:
+      - reachistorian-db
+    volumes:
+      # Mount the provider config to Grafana's provisioning folder
+      - ./grafana/provisioning/dashboards/dashboard-provider.yaml:/etc/grafana/provisioning/dashboards/provider.yaml
+      - ./grafana/provisioning/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+      # Mount your actual JSON files to the path defined in the provider
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      # Optional: Set your specific dashboard as the Home screen
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/my-ping-dashboard.json
+      - GF_INSTALL_PLUGINS=victoriametrics-metrics-datasource
+  reachistorian-collector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: reachistorian-collector:v1.0.0
+    container_name: reachistorian-collector
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    cap_add:
+      - NET_RAW
+    depends_on:
+      - reachistorian-db
