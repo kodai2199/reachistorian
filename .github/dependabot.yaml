@@ -31,4 +31,3 @@ updates:
       timezone: "UTC"
     labels:
       - "dependencies"
-      - "github-actions"
