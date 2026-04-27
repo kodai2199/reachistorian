@@ -91,7 +91,7 @@ Duration values use Go duration syntax, for example:
 
 ## Running the Collector Without Docker
 
-Use this when you already have VictoriaMetrics and Grafana running elsewhere.
+Use this when you already have VictoriaMetrics and Grafana running elsewhere:
 
 1. Configure `config.yaml` and set `push_url` to your VictoriaMetrics endpoint.
 2. Run the collector:
